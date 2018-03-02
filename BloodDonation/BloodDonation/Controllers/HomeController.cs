@@ -10,7 +10,7 @@ namespace BloodDonation.Controllers
     {
         public ActionResult Index()
         {
-            int x = 2;
+            int x = 2, y = 4;
             return View();
         }
 

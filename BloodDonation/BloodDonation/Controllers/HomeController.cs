@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.UnitOfWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,15 @@ namespace BloodDonation.Controllers
 {
     public class HomeController : Controller
     {
+        private UnitOfWork unitOfWork;
+
+        public HomeController()
+        {
+            unitOfWork = new UnitOfWork();
+        }
+
         public ActionResult Index()
         {
-            
-            int x = 2, y = 3;
             return View();
             
         }

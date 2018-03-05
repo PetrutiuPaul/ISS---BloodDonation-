@@ -143,3 +143,8 @@ D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\obj\Debug\BloodDonation.
 D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\bin\DAL.dll
 D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\bin\DAL.pdb
 D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\bin\DAL.dll.config
+D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\bin\AutoMapper.Net4.dll
+D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\bin\AutoMapper.dll
+D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\bin\Bootstrapper.AutoMapper.dll
+D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\bin\Bootstrapper.dll
+D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\bin\AutoMapper.xml

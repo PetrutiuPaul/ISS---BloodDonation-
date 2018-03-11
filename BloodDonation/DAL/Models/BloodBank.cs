@@ -18,7 +18,9 @@ namespace DAL.Models
         public string Name { get; set; }
 
         [ForeignKey("County")]
-        public int CountyId { get; set; }
+        public int County_Id { get; set; }
+
+        public virtual County County { get; set; }
 
         public virtual ICollection<Blood> Blood { get; set; }
 

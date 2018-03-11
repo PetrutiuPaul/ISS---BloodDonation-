@@ -10,6 +10,7 @@
     {
         private AppDbContext context = new AppDbContext();
         private GenericRepository<User> userRepository;
+        private GenericRepository<Hospital> hospitalRepository;
 
         private UserStore<User> userStore;
         private UserManager<User> userManager;
@@ -42,6 +43,18 @@
                     this.userRepository = new GenericRepository<User>(context);
                 }
                 return userRepository;
+            }
+        }
+
+        public GenericRepository<Hospital> HospitalRepository
+        {
+            get
+            {
+                if (this.hospitalRepository == null)
+                {
+                    this.hospitalRepository = new GenericRepository<Hospital>(context);
+                }
+                return hospitalRepository;
             }
         }
 

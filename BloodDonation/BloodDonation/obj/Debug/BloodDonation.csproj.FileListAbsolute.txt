@@ -230,3 +230,5 @@ D:\Faculta\ISS\Iss 2\ISS---BloodDonation-\BloodDonation\BloodDonation\obj\Debug\
 D:\Faculta\ISS\Iss 2\ISS---BloodDonation-\BloodDonation\BloodDonation\obj\Debug\BloodDonation.csproj.CopyComplete
 D:\Faculta\ISS\Iss 2\ISS---BloodDonation-\BloodDonation\BloodDonation\obj\Debug\BloodDonation.dll
 D:\Faculta\ISS\Iss 2\ISS---BloodDonation-\BloodDonation\BloodDonation\obj\Debug\BloodDonation.pdb
+D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\bin\Common.dll
+D:\ISS\ISS---BloodDonation-\BloodDonation\BloodDonation\bin\Common.pdb

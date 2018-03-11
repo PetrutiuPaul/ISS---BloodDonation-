@@ -34,6 +34,8 @@ namespace DAL.Models
 
         [Required]
         [ForeignKey("User")]
-        public Guid User_Id { get; set; }
+        public string User_Id { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

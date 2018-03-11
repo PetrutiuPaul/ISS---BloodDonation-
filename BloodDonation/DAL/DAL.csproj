@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201803041221264_Initial.Designer.cs">
       <DependentUpon>201803041221264_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803111721091_AddHospitals.cs" />
+    <Compile Include="Migrations\201803111721091_AddHospitals.Designer.cs">
+      <DependentUpon>201803111721091_AddHospitals.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\Blood.cs" />
@@ -79,6 +83,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803041221264_Initial.resx">
       <DependentUpon>201803041221264_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803111721091_AddHospitals.resx">
+      <DependentUpon>201803111721091_AddHospitals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -60,6 +60,13 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\Blood.cs" />
+    <Compile Include="Models\BloodBank.cs" />
+    <Compile Include="Models\County.cs" />
+    <Compile Include="Models\Hospital.cs" />
+    <Compile Include="Models\Locality.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Request.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
@@ -73,6 +80,12 @@
     <EmbeddedResource Include="Migrations\201803041221264_Initial.resx">
       <DependentUpon>201803041221264_Initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{23DA57B4-F348-4AD3-A15F-3C731073CA6C}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

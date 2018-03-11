@@ -4,6 +4,10 @@
 /BloodDonation/.vs/BloodDonation/v15/Server/sqlite3/storage.ide
 /BloodDonation/.vs/BloodDonation/v15/Server/sqlite3/storage.ide-shm
 /BloodDonation/.vs/BloodDonation/v15/Server/sqlite3/storage.ide-wal
+/BloodDonation/BloodDonation/obj
+/BloodDonation/DAL/bin/Debug
+/BloodDonation/DAL/obj/Debug
+/BloodDonation/Services/obj/Debug
 /BloodDonation/DAL/obj/Debug
 /BloodDonation/DAL/bin/Debug
 /BloodDonation/BloodDonation/App_Data

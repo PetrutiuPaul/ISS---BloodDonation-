@@ -18,7 +18,7 @@ namespace BloodDonation.Controllers
 
         public ActionResult Index()
         {
-            var all = unitOfWork.UserRepository.Get();
+            //var all = unitOfWork.UserRepository.Get();
             int a = 2;
             return View();
             

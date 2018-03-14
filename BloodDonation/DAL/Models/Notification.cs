@@ -4,20 +4,16 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Hospital
+    public class Notification
     {
         [Key]
         [Required]
         public int Id { get; set; }
 
+        [ForeignKey("Request")]
         [Required]
-        public string Name { get; set; }
-
-        [ForeignKey("BloodBank")]
-        public int BloodBank_Id { get; set; }
-
-        public virtual BloodBank BloodBank { get; set; }
-
-        public virtual ICollection<User> Doctors { get; set; }
+        public int Request_Id { get; set; }
+        public virtual Request Request { get; set; }
+        public virtual ICollection<UserNotification> UserNotifications { get; set; }
     }
 }

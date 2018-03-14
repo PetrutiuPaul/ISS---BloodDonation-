@@ -26,4 +26,11 @@ namespace Common.Enums
         Negative = 1,
         Positive = 2
     }
+
+    public enum Stage
+    {
+        Rejected = 0,
+        Pending = 1,
+        Accepted = 2
+    }
 }

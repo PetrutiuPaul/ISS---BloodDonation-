@@ -1,20 +1,16 @@
 ﻿using BloodDonation.Models;
 using DAL.Models;
-using DAL.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using DAL.UnitOfWork.Contract;
 using System.Web.Mvc;
 
 namespace BloodDonation.Controllers
 {
     public class AdminController : Controller
     {
-        private UnitOfWork unitOfWork;
-        public AdminController()
+        private IUnitOfWork unitOfWork;
+        public AdminController(IUnitOfWork unitOfWork)
         {
-            unitOfWork = new UnitOfWork();
+            this.unitOfWork = unitOfWork;
         }
 
         // GET: Admin

@@ -2,11 +2,12 @@
 {
     using DAL.Models;
     using DAL.Repositories;
+    using DAL.UnitOfWork.Contract;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
 
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
         private AppDbContext context = new AppDbContext();
         private GenericRepository<User> userRepository;

@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNet.Identity
+
+<style>
+    .btn-default {
+        background: darkred;
+        color: whitesmoke;
+        font-size: 40px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+</style>
+
+@if (Request.IsAuthenticated)
+{
+    <button type="button" class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Index", "Home")'">
+        Donează
+    </button>
+
+}
+else
+{
+    <button type="button" class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Login", "Account")'">
+        Donează
+    </button>
+}

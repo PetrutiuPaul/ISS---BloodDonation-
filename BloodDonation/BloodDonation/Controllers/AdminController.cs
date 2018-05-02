@@ -31,10 +31,11 @@ namespace BloodDonation.Controllers
             return View();
         }
 
-        //TO DO: change Hospital with HospitalViewModel
+
+
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult Create(HospitalViewModel hospitalViewModel)
+        public ActionResult CreateHospital(HospitalViewModel hospitalViewModel)
         {
             try
             {
@@ -54,6 +55,9 @@ namespace BloodDonation.Controllers
             }
         }
 
+
+
+
         // GET: Admin/Edit/5
         public ActionResult Edit(int id)
         {
@@ -62,13 +66,19 @@ namespace BloodDonation.Controllers
 
         // POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditHospital(HospitalViewModel hospitalViewModel)
         {
             try
             {
-                // TODO: Add update logic here
+                Hospital hospital = new Hospital()
+                {
+                    Name = hospitalViewModel.Name,
+                    BloodBank_Id = hospitalViewModel.BloodBank_Id
 
-                return RedirectToAction("Index");
+                };
+                unitOfWork.HospitalRepository.Update(hospital);
+                unitOfWork.Save();
+                return RedirectToAction("Edit");
             }
             catch
             {
@@ -84,12 +94,13 @@ namespace BloodDonation.Controllers
 
         // POST: Admin/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(HospitalViewModel hospitalViewModel)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                int BloodBank_Id = hospitalViewModel.BloodBank_Id;
+                unitOfWork.HospitalRepository.Delete(BloodBank_Id);
+                unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             catch
@@ -97,5 +108,38 @@ namespace BloodDonation.Controllers
                 return View();
             }
         }
+
+
+        //BloodBank-CRUD
+        public ActionResult CreateBloodBank()
+        {
+            return View();
+        }
+
+
+        /*
+                public ActionResult CreateBloodBank(BloodBankViewModel bloodBankViewModel)
+                {
+                    try
+                    {
+                        BloodBank bloodB = new BloodBank()
+                        {
+                            Name = bloodBankViewModel.Name,
+                            County_Id = bloodBankViewModel.County_Id
+                        };
+
+                        unitOfWork.BloodBankRepository.Insert(bloodB);
+                        unitOfWork.Save();
+
+                        return RedirectToAction("CreateA"); // ?
+                    }
+                    catch
+                    {
+                        return View();
+                    }
+                }
+            }
+            */
     }
 }
+

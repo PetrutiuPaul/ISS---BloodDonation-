@@ -17,13 +17,16 @@
         public string PatientName { get; set; }
 
         [Required]
+        public ProductType ProductType { get; set; }
+
+        [Required]
         public Priority Priority { get; set; }
 
-        [Required]
         public BloodType BloodType { get; set; }
 
-        [Required]
         public RhType Rh { get; set; }
+
+        public float Amount { get; set; }
 
         public virtual User User { get; set; }
 

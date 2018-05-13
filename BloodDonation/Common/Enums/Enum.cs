@@ -8,9 +8,9 @@ namespace Common.Enums
 {
     public enum Priority
     {
-        Low = 1,
+        Low = 3,
         Medium = 2,
-        High = 3
+        High = 1
     }
 
     public enum BloodType
@@ -32,5 +32,13 @@ namespace Common.Enums
         Rejected = 0,
         Pending = 1,
         Accepted = 2
+    }
+
+    public enum ProductType
+    {
+        Blood = 0,
+        BloodCell = 1,
+        Whitecell = 2,
+        Plasma = 3
     }
 }

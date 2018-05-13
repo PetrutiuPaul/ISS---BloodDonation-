@@ -1,0 +1,41 @@
+﻿@model BloodDonation.Models.BloodBankViewModel
+
+@{
+    ViewBag.Title = "DeleteBloodBanks";
+}
+
+<h2>DeleteBloodBanks</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BloodBankViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.County_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County_Id)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("ConfirmDeleteBloodBank", "Admin")) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="hidden" value="@Model.Id", name="id" />
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "BloodBanks")
+        </div>
+    }
+</div>

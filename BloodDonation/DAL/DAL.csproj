@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201803141737130_CompleteDB.Designer.cs">
       <DependentUpon>201803141737130_CompleteDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805051330206_addAmountOnProducts.cs" />
+    <Compile Include="Migrations\201805051330206_addAmountOnProducts.Designer.cs">
+      <DependentUpon>201805051330206_addAmountOnProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\Blood.cs" />
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803141737130_CompleteDB.resx">
       <DependentUpon>201803141737130_CompleteDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805051330206_addAmountOnProducts.resx">
+      <DependentUpon>201805051330206_addAmountOnProducts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

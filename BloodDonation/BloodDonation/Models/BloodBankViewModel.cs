@@ -6,16 +6,15 @@ using System.Web;
 
 namespace BloodDonation.Models
 {
-    public class HospitalViewModel
+    public class BloodBankViewModel
     {
         [Required]
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3)]
         public string Name { get; set; }
         
         [Required]
-        public int BloodBank_Id { get; set; }
-}
+        public int County_Id { get; set; }
+    }
 }

@@ -152,7 +152,16 @@ namespace BloodDonation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    BirthDate = model.BirthDate,
+                    CNP = model.CNP,
+                    County_Id = model.County_Id,
+                    LastName = model.LastName,
+                    FirstName = model.FirstName,
+                    Locality_Id = model.Locality_Id
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

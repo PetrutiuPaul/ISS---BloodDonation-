@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BloodDonation.Models
@@ -79,6 +80,31 @@ namespace BloodDonation.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "CNP")]
+        public string CNP { get; set; }
+
+        [Required]
+        [Display(Name = "First name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Date of birth")]
+        public DateTime BirthDate { get; set; }
+        
+        [Required]
+        [Display(Name = "County")]
+        public int County_Id { get; set; }
+        
+
+        [Required]
+        [Display(Name = "Locality")]
+        public int Locality_Id { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DAL.Models.User>
+
+@{
+    ViewBag.Title = "Doctors";
+}
+
+<h2>Doctors</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateDoctor")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.CNP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "EditDoctor", new { cnp=item.CNP }) |
+            @Html.ActionLink("Delete", "DeleteDoctor", new { cnp=item.CNP })
+        </td>
+    </tr>
+}
+
+</table>

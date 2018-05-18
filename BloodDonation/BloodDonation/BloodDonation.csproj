@@ -278,6 +278,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BloodBankViewModel.cs" />
+    <Compile Include="Models\DoctorViewModel.cs" />
     <Compile Include="Models\HospitalViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -400,6 +401,9 @@
     <Content Include="Views\Admin\CreateBloodBank.cshtml" />
     <Content Include="Views\Admin\EditBloodBank.cshtml" />
     <Content Include="Views\Admin\DeleteBloodBank.cshtml" />
+    <Content Include="Views\Admin\Doctors.cshtml" />
+    <Content Include="Views\Admin\CreateDoctor.cshtml" />
+    <Content Include="Views\Admin\EditDoctor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

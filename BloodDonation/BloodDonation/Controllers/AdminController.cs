@@ -1,6 +1,10 @@
 ﻿using BloodDonation.Models;
 using DAL.Models;
 using DAL.UnitOfWork.Contract;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 
 namespace BloodDonation.Controllers
@@ -8,9 +12,29 @@ namespace BloodDonation.Controllers
     public class AdminController : Controller
     {
         private IUnitOfWork unitOfWork;
+        private ApplicationUserManager _userManager;
+
         public AdminController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
+        }
+
+        public AdminController(IUnitOfWork unitOfWork, ApplicationUserManager userManager)
+        {
+            this.unitOfWork = unitOfWork;
+            UserManager = userManager;
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
         public ActionResult Hospitals()
@@ -216,6 +240,151 @@ namespace BloodDonation.Controllers
         }
 
         //------------------------------------------------
-        
+
+        public ActionResult Doctors()
+        {
+            var users = unitOfWork.UserRepository.Get();
+            List<User> allDoctors = new List<User>();
+            foreach(var user in users)
+            {
+                if(UserManager.IsInRole(user.Id,"Doctor") || UserManager.IsInRole(user.Id, "BloodBankDoctor"))
+                    allDoctors.Add(user);
+            }
+            return View(users);
+        }
+
+        public ActionResult CreateDoctor()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateDoctor(DoctorViewModel userViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                        var user = new User
+                        {
+                            UserName = userViewModel.Email,
+                            Email = userViewModel.Email,
+                            BirthDate = userViewModel.BirthDate,
+                            CNP = userViewModel.CNP,
+                            County_Id = userViewModel.County_Id,
+                            LastName = userViewModel.LastName,
+                            FirstName = userViewModel.FirstName,
+                            Locality_Id = userViewModel.Locality_Id
+                        };
+                        var result = UserManager.Create(user, userViewModel.Password);
+
+                        if(result != null)
+                        {
+                            if(userViewModel.Doctor)
+                                UserManager.AddToRole(user.Id, "Doctor");
+                            if (userViewModel.BloodBankDoctor)
+                                UserManager.AddToRole(user.Id, "BloodBankDoctor");
+                        }
+                        
+                        return RedirectToAction("Doctors");
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+            else
+                return View();
+        }
+
+        public ActionResult EditDoctor(string cnp)
+        {
+            var doctor = unitOfWork.UserRepository.Get(x => x.CNP == cnp)[0];
+            var model = new DoctorViewModel
+            {
+                Email = doctor.Email,
+                BirthDate = doctor.BirthDate,
+                CNP = doctor.CNP,
+                County_Id = doctor.County_Id,
+                LastName = doctor.LastName,
+                FirstName = doctor.FirstName,
+                Locality_Id = doctor.Locality_Id
+            };
+            if (UserManager.IsInRole(doctor.Id, "Doctor"))
+                model.Doctor = true;
+            if (UserManager.IsInRole(doctor.Id, "BloodBankDoctor"))
+                model.BloodBankDoctor = true;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditDoctor(DoctorViewModel userViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    User toUpdate = unitOfWork.UserRepository.Get(x => x.CNP == userViewModel.CNP)[0];
+                    toUpdate.Email = userViewModel.Email;
+                    toUpdate.BirthDate = userViewModel.BirthDate;
+                    toUpdate.CNP = userViewModel.CNP;
+                    toUpdate.County_Id = userViewModel.County_Id;
+                    toUpdate.LastName = userViewModel.LastName;
+                    toUpdate.FirstName = userViewModel.FirstName;
+                    toUpdate.Locality_Id = userViewModel.Locality_Id;
+                    if (userViewModel.Doctor == true)
+                        UserManager.AddToRole(toUpdate.Id, "Doctor");
+                    if (userViewModel.BloodBankDoctor == true)
+                        UserManager.AddToRole(toUpdate.Id, "BloodBankDoctor");
+                    unitOfWork.UserRepository.Update(toUpdate);
+                    unitOfWork.Save();
+                    return RedirectToAction("Doctors");
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public ActionResult DeleteDoctor(string cnp)
+        {
+            User doctor = unitOfWork.UserRepository.Get(x => x.CNP == cnp)[0];
+            var model = new DoctorViewModel
+            {
+                Email = doctor.Email,
+                BirthDate = doctor.BirthDate,
+                CNP = doctor.CNP,
+                County_Id = doctor.County_Id,
+                LastName = doctor.LastName,
+                FirstName = doctor.FirstName,
+                Locality_Id = doctor.Locality_Id
+            };
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmDeleteDoctor(string cnp)
+        {
+            try
+            {
+                User doctor = unitOfWork.UserRepository.Get(x => x.CNP == cnp)[0];
+                unitOfWork.UserRepository.Delete(doctor);
+                unitOfWork.Save();
+                return RedirectToAction("Doctors");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
     }
 }

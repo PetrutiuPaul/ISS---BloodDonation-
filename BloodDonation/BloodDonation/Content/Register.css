@@ -1,0 +1,115 @@
+﻿body {
+    background-image: url("/fonts/Photos/Register.jpg");
+    background-size: 100% auto;
+}
+
+#row0 {
+
+    background-color: #4C4CFF;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-color: #3535b2;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    width: 45%;
+    height:7%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    opacity: 0.8;
+    font-weight: 600;
+
+}
+
+
+
+#row1 {
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-color: #3535b2;
+    position: fixed;
+    top: 49%;
+    left: 50%;
+    width:45%;
+    height:51%;
+    transform: translate(-50%, -50%);
+    opacity: 0.91;
+    color: #0000FF;
+    font-size: 20px;
+    font-weight: 500;
+    text-align:center;
+}
+
+
+ol {
+    list-style-type: none;
+}
+
+.form-group {
+    margin-top: 8px;
+    margin-bottom:10px;
+}
+
+    .form-group:first-child {
+        margin-top: 0px;
+    }
+
+ol li
+{
+    float: left;
+    margin-left:40px;
+}
+
+
+li:first-child{
+    margin-top:-10px;
+}
+
+li:last-child{
+    margin-left:100px;
+}
+
+#accountInfo {
+    
+    margin-top: 30px;
+}
+
+
+.form-control {
+    border: ridge;
+    border-radius: 4px;
+    border-bottom: ridge;
+    border-width: 1px;
+    border-color:lightblue;
+}
+
+
+
+.btn-default {
+    background-color: #000033;
+    color: white;
+    padding:12px 25px 12px 25px;
+    position: relative;
+    border-radius:5px;
+}
+
+.btn-default:hover {
+background-color: #4C4CFF;
+color: white;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size:18px;
+}

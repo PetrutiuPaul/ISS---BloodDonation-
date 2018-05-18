@@ -1,0 +1,58 @@
+﻿body {
+    padding: 0px;
+    margin: 0px;
+    text-align:center;
+}
+
+.photo {
+    margin:0px;
+    background-image: url("/fonts/Photos/index.jpg");
+    width: 1360px;
+    height: 300px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+    
+.container.body-content{
+    margin:0px;
+    padding:0px;
+}
+
+
+.afterPhotoContainer {
+   
+
+}
+
+
+.infoText {
+    margin-left: 220px;
+    padding: 8px;
+    border: ridge;
+    border-color: lightgrey;
+    border-radius: 7px;
+    margin-bottom: 50px;
+    background-color: #e5e5ff;
+}
+
+.buton{
+
+    margin-top:20px;
+    margin-left:165px;
+    margin-bottom:30px;
+
+}
+
+
+.separator {
+    background-image: url("/fonts/Photos/separator.jpg");
+    height:10px;
+    width:1360px;
+}
+
+
+.footer{
+
+    padding:13px 0 13px 8px;
+    font-size:10px;
+}

@@ -301,7 +301,6 @@
     <Content Include="fonts\Photos\Doctors.jpg" />
     <Content Include="fonts\Photos\index.jpg" />
     <Content Include="fonts\Photos\Register.jpg" />
-    <Content Include="fonts\Photos\rsz_index.jpg" />
     <Content Include="fonts\Photos\separator.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

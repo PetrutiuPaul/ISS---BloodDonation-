@@ -48,6 +48,10 @@ namespace BloodDonation.Models
         [Display(Name = "Locality")]
         public int Locality_Id { get; set; }
 
+        [Required]
+        [Display(Name = "Hospital")]
+        public int Hospital_Id { get; set; }
+
         public bool Doctor { get; set; }
 
         public bool BloodBankDoctor { get; set; }

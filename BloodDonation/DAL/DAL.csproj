@@ -53,7 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Migrations\201803041221264_Initial.cs" />
     <Compile Include="Migrations\201803041221264_Initial.Designer.cs">
       <DependentUpon>201803041221264_Initial.cs</DependentUpon>
@@ -69,6 +68,14 @@
     <Compile Include="Migrations\201805051330206_addAmountOnProducts.cs" />
     <Compile Include="Migrations\201805051330206_addAmountOnProducts.Designer.cs">
       <DependentUpon>201805051330206_addAmountOnProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805281401181_removeRequireFromDenialReason.cs" />
+    <Compile Include="Migrations\201805281401181_removeRequireFromDenialReason.Designer.cs">
+      <DependentUpon>201805281401181_removeRequireFromDenialReason.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805281519283_nameChange.cs" />
+    <Compile Include="Migrations\201805281519283_nameChange.Designer.cs">
+      <DependentUpon>201805281519283_nameChange.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
@@ -105,6 +112,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805051330206_addAmountOnProducts.resx">
       <DependentUpon>201805051330206_addAmountOnProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805281401181_removeRequireFromDenialReason.resx">
+      <DependentUpon>201805281401181_removeRequireFromDenialReason.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805281519283_nameChange.resx">
+      <DependentUpon>201805281519283_nameChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

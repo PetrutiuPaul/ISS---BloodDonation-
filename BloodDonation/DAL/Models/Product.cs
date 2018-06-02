@@ -18,7 +18,7 @@
         public DateTime ExpireTime { get; set; }
 
         [Required]
-        public float Àmount { get; set; }
+        public float Amount { get; set; }
 
         [ForeignKey("BloodBank")]
         public int BloodBank_Id { get; set; }

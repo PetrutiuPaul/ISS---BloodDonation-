@@ -3,6 +3,7 @@ using DAL.Models;
 using DAL.UnitOfWork.Contract;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
@@ -17,12 +18,14 @@ namespace BloodDonation.Controllers
         public AdminController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
+            CreateViewBag();
         }
 
         public AdminController(IUnitOfWork unitOfWork, ApplicationUserManager userManager)
         {
             this.unitOfWork = unitOfWork;
             UserManager = userManager;
+            CreateViewBag();
         }
 
         public ApplicationUserManager UserManager
@@ -250,7 +253,7 @@ namespace BloodDonation.Controllers
                 if(UserManager.IsInRole(user.Id,"Doctor") || UserManager.IsInRole(user.Id, "BloodBankDoctor"))
                     allDoctors.Add(user);
             }
-            return View(users);
+            return View(allDoctors);
         }
 
         public ActionResult CreateDoctor()
@@ -265,18 +268,21 @@ namespace BloodDonation.Controllers
             {
                 try
                 {
-                        var user = new User
-                        {
-                            UserName = userViewModel.Email,
-                            Email = userViewModel.Email,
-                            BirthDate = userViewModel.BirthDate,
-                            CNP = userViewModel.CNP,
-                            County_Id = userViewModel.County_Id,
-                            LastName = userViewModel.LastName,
-                            FirstName = userViewModel.FirstName,
-                            Locality_Id = userViewModel.Locality_Id
-                        };
+                    var user = new User
+                    {
+                        UserName = userViewModel.Email,
+                        Email = userViewModel.Email,
+                        BirthDate = userViewModel.BirthDate,
+                        CNP = userViewModel.CNP,
+                        County_Id = userViewModel.County_Id,
+                        LastName = userViewModel.LastName,
+                        FirstName = userViewModel.FirstName,
+                        Locality_Id = userViewModel.Locality_Id,
+                        Hospital_Id = userViewModel.Hospital_Id
+                    };
                         var result = UserManager.Create(user, userViewModel.Password);
+
+                    
 
                         if(result != null)
                         {
@@ -288,7 +294,7 @@ namespace BloodDonation.Controllers
                         
                         return RedirectToAction("Doctors");
                 }
-                catch
+                catch(Exception ex)
                 {
                     return View();
                 }
@@ -332,6 +338,7 @@ namespace BloodDonation.Controllers
                     toUpdate.LastName = userViewModel.LastName;
                     toUpdate.FirstName = userViewModel.FirstName;
                     toUpdate.Locality_Id = userViewModel.Locality_Id;
+                    toUpdate.Hospital_Id = userViewModel.Hospital_Id;
                     if (userViewModel.Doctor == true)
                         UserManager.AddToRole(toUpdate.Id, "Doctor");
                     if (userViewModel.BloodBankDoctor == true)
@@ -385,6 +392,79 @@ namespace BloodDonation.Controllers
             }
         }
 
+        private void CreateViewBag()
+        {
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            var all = unitOfWork.BloodBankRepository.Get();
+            foreach (var h in all)
+            {
+                listItems.Add(new SelectListItem
+                {
+                    Text = h.Name,
+                    Value = h.Id.ToString()
+                });
+            }
+
+            List<SelectListItem> BandD = new List<SelectListItem>();
+            var badnd = unitOfWork.BloodBankRepository.Get();
+            foreach (var h in badnd)
+            {
+                BandD.Add(new SelectListItem
+                {
+                    Text = h.Name,
+                    Value = h.Id.ToString()
+                });
+            }
+
+            var badnd1 = unitOfWork.HospitalRepository.Get();
+            foreach (var h in badnd1)
+            {
+                BandD.Add(new SelectListItem
+                {
+                    Text = h.Name,
+                    Value = h.Id.ToString()
+                });
+            }
+
+            List<SelectListItem> Hostpitals = new List<SelectListItem>();
+            var hostpitals = unitOfWork.HospitalRepository.Get();
+            foreach (var h in hostpitals)
+            {
+                Hostpitals.Add(new SelectListItem
+                {
+                    Text = h.Name,
+                    Value = h.Id.ToString()
+                });
+            }
+
+            List<SelectListItem> Counties = new List<SelectListItem>();
+            var counties = unitOfWork.CountyRepository.Get();
+            foreach (var h in counties)
+            {
+                Counties.Add(new SelectListItem
+                {
+                    Text = h.Name,
+                    Value = h.Id.ToString()
+                });
+            }
+
+            List<SelectListItem> Localities = new List<SelectListItem>();
+            var localities = unitOfWork.LocalityRepository.Get();
+            foreach (var h in localities)
+            {
+                Localities.Add(new SelectListItem
+                {
+                    Text = h.Name,
+                    Value = h.Id.ToString()
+                });
+            }
+
+            ViewBag.BloodBanksAndHospitals = BandD;
+            ViewBag.Counties = Counties;
+            ViewBag.Localities = Localities;
+            ViewBag.Hospitals = Hostpitals;
+            ViewBag.BloodBanks = listItems;
+        }
 
     }
 }

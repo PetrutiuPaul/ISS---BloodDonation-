@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 
 <style>
-    .btn-default {
+    .btn-custome {
         background: darkred;
         color: whitesmoke;
         font-size: 40px;
@@ -11,14 +11,15 @@
 
 @if (Request.IsAuthenticated)
 {
-    <button type="button" class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Index", "Home")'">
+    <button type="button" class="btn btn-custome btn-lg" data-toggle="modal" data-target="#donationModal">
         Donează
     </button>
 
 }
 else
 {
-    <button type="button" class="btn btn-default btn-lg" onclick="location.href='@Url.Action("Login", "Account")'">
+    <button type="button" class="btn btn-custome  btn-lg" data-toggle="modal" data-target="#logInModal">
         Donează
     </button>
+    
 }

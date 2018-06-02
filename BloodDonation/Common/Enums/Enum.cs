@@ -18,13 +18,15 @@ namespace Common.Enums
         O = 0,
         A = 1,
         B = 2,
-        AB = 3
+        AB = 3,
+        X = 4
     }
 
     public enum RhType
     {
         Negative = 1,
-        Positive = 2
+        Positive = 2,
+        X = 3
     }
 
     public enum Stage

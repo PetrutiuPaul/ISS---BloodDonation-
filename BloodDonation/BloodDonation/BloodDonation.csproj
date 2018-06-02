@@ -272,6 +272,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HospitalController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -279,6 +280,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BloodBankViewModel.cs" />
     <Compile Include="Models\DoctorViewModel.cs" />
+    <Compile Include="Models\DonationViewModel.cs" />
     <Compile Include="Models\HospitalViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -411,6 +413,8 @@
     <Content Include="Views\Admin\Doctors.cshtml" />
     <Content Include="Views\Admin\CreateDoctor.cshtml" />
     <Content Include="Views\Admin\EditDoctor.cshtml" />
+    <Content Include="Views\Hospital\Index.cshtml" />
+    <Content Include="Views\Hospital\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -419,6 +423,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{23DA57B4-F348-4AD3-A15F-3C731073CA6C}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{0D6D473F-5F42-475A-853F-6E054545A30F}</Project>
       <Name>DAL</Name>

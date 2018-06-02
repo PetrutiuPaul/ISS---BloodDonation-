@@ -22,8 +22,7 @@
 
         [Required]
         public Stage Succesfull { get; set; }
-
-        [Required]
+        
         public string DenialReason { get; set; }
 
         [ForeignKey("User")]

@@ -1,47 +1,119 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "";
+    List<SelectListItem> bloodbanks = ViewBag.BloodBanks;
 }
 
 <head>
     <link rel="stylesheet" type="text/css" href="/Content/Index.css">
     <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-    <div class="photo">
-        
+<div class="photo">
+
+</div>
+
+<div class="afterPhotoContainer">
+
+
+    <div class="buton" style="text-align:center;">
+        @Html.Partial("Partial/ButonDoneaza")
     </div>
 
-    <div class="afterPhotoContainer">
+
+    <div class="infoText">
+        Donarea periodică este indispensabilă pentru sistemul transfuzional şi pentru bolnavii ce au nevoie de produse sanguine sigure, suficiente şi la timp, provenite de la donatori responsabili. Astfel, anumite categorii de bolnavi pot primi produse sanguine doar de la persoane care donează de două – trei ori pe an<br />
+        <br />
+        România se află în continuare pe ultimele locuri în Europa la capitolul donării de sânge - doar 1,7% din populaţia adultă donează sânge.
+        <br />
+        Cu toate astea, în situaţii limită românii au demonstrat solidaritate şi simt civic, stând ore în şir la coadă pentru a dona sânge. Chiar dacă pe moment aceste situaţii sunt rezolvate, nevoia de sânge este însă una constantă. Realizarea de stocuri prea mari de sânge, de la persoane care donează pentru prima dată, nu este utilă. Preparatele sanguine au un termen de valabilitate scurt. Trombocitele pot fi utilizate în termen de 5 zile, globulele roşii în 42 de zile iar plasma poate fi congelată şi utilizată în termen de 12 luni.
 
 
-        <div class="buton" style="text-align:center;">
-            @Html.Partial("Partial/ButonDoneaza")
+    </div>
+
+
+
+
+</div>
+
+<div class="separator">
+
+</div>
+
+<div class="footer">
+
+    All right reserved.<br />
+    Apasand buton Doneaza, accept regulamentul si conditiile siteului.
+
+</div>
+
+
+<div id="logInModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="align-content:center">
+                    <button type="button" class="btn btn-default btn-lg">@Html.ActionLink("Log in", "LogIn", "Account")</button>
+                    <button type="button" class="btn btn-default btn-lg">@Html.ActionLink("Register", "Register", "Account")</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
 
-
-        <div class="infoText">
-            Donarea periodică este indispensabilă pentru sistemul transfuzional şi pentru bolnavii ce au nevoie de produse sanguine sigure, suficiente şi la timp, provenite de la donatori responsabili. Astfel, anumite categorii de bolnavi pot primi produse sanguine doar de la persoane care donează de două – trei ori pe an<br />
-            <br />
-            România se află în continuare pe ultimele locuri în Europa la capitolul donării de sânge - doar 1,7% din populaţia adultă donează sânge.
-            <br />
-            Cu toate astea, în situaţii limită românii au demonstrat solidaritate şi simt civic, stând ore în şir la coadă pentru a dona sânge. Chiar dacă pe moment aceste situaţii sunt rezolvate, nevoia de sânge este însă una constantă. Realizarea de stocuri prea mari de sânge, de la persoane care donează pentru prima dată, nu este utilă. Preparatele sanguine au un termen de valabilitate scurt. Trombocitele pot fi utilizate în termen de 5 zile, globulele roşii în 42 de zile iar plasma poate fi congelată şi utilizată în termen de 12 luni.
+    </div>
+</div>
 
 
+<div id="donationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="align-content:center">
+
+
+                    @using (Html.BeginForm("CreateDonation","Home"))
+    {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>DonationViewModel</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.Label("Blood Bank", htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("BloodBank_Id", bloodbanks, new { @class = "" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
 
-
-
-
     </div>
-
-    <div class="separator">
-
-    </div>
-
-    <div class="footer">
-
-        All right reserved.<br />
-        Apasand buton Doneaza, accept regulamentul si conditiile siteului.
-
-    </div>
-
+</div>

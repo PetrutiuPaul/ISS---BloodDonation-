@@ -420,6 +420,9 @@
     <Content Include="Views\Hospital\Delete.cshtml" />
     <Content Include="Views\BloodBank\Requests.cshtml" />
     <Content Include="Views\BloodBank\Donations.cshtml" />
+    <Content Include="Views\BloodBank\FirstAnalyse.cshtml" />
+    <Content Include="Views\BloodBank\SecondAnalyse.cshtml" />
+    <Content Include="Views\BloodBank\CancelAnalyse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

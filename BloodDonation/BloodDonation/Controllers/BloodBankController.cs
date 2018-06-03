@@ -54,9 +54,46 @@ namespace BloodDonation.Controllers
         }
 
         // GET: BloodBank/Create
-        public ActionResult Create()
+        public ActionResult FirstAnalyse(int id)
         {
-            return View();
+            var donation = this.unitOfWork.DonationRepository.Get(x => x.Id == id).FirstOrDefault();
+            return View(donation);
+        }
+
+        [HttpPost]
+        public ActionResult FirstAnalyse(Donation don)
+        {
+            var donation = this.unitOfWork.DonationRepository.Get(x => x.Id == don.Id).FirstOrDefault();
+            donation.RhType = don.RhType;
+            donation.BloodType = don.BloodType;
+            donation.Succesfull = Common.Enums.Stage.Accepted;
+            unitOfWork.DonationRepository.Update(donation);
+            unitOfWork.Save();
+            return RedirectToAction("Donations");
+        }
+
+        public ActionResult CancelAnalyse(int id)
+        {
+            var donation = this.unitOfWork.DonationRepository.Get(x => x.Id == id).FirstOrDefault();
+            return View(donation);
+        }
+
+        [HttpPost]
+        public ActionResult CancelAnalyse(Donation don)
+        {
+            var donation = this.unitOfWork.DonationRepository.Get(x => x.Id == don.Id).FirstOrDefault();
+            donation.DenialReason = don.DenialReason;
+            donation.Succesfull = Common.Enums.Stage.Rejected;
+            unitOfWork.DonationRepository.Update(donation);
+            unitOfWork.Save();
+            return RedirectToAction("Donations");
+        }
+
+        // GET: BloodBank/Create
+        public ActionResult SecondAnalyse(int id)
+        {
+            var donation = this.unitOfWork.DonationRepository.Get(x => x.Id == id).FirstOrDefault();
+            return View(donation);
         }
 
         // POST: BloodBank/Create

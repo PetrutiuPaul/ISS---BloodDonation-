@@ -26,7 +26,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Succesfull)
             </td>
-            <td></td>
+            <td>
+                <button type="button" class="btn btn-success btn-sm">
+                    @Html.ActionLink("Next Phase", "FirstAnalyse", new { id = item.Id }, new { @style = "color:white" })
+                </button>
+                <button type="button" class="btn btn-danger btn-sm">
+                    @Html.ActionLink("Cancel", "CancelAnalyse", new { id = item.Id }, new { @style = "color:white" })
+                </button>
+            </td>
         </tr>
     }
 
@@ -54,7 +61,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Succesfull)
             </td>
-            <td></td>
+            <td>
+                <button type="button" class="btn btn-success btn-sm">
+                    @Html.ActionLink("Finish Proccess", "SecondAnalyse", new { id = item.Id }, new { @style = "color:white"})
+                </button>
+                <button type="button" class="btn btn-danger btn-sm">
+                    @Html.ActionLink("Cancel", "CancelAnalyse", new { id = item.Id }, new { @style = "color:white" })
+                </button>
+            </td>
         </tr>
     }
 

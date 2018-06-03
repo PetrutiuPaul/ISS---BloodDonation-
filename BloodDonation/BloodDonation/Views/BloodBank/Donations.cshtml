@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DAL.Models.Donation>
+
+@{
+    ViewBag.Title = "Donations";
+}
+
+<h2>Donations</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Stage
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Where(x => x.Succesfull == Common.Enums.Stage.Pending))
+    {
+        <tr>
+            <td>
+                @(item.User.FirstName + " " + item.User.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Succesfull)
+            </td>
+            <td></td>
+        </tr>
+    }
+
+</table>
+
+<br /><br />
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Stage
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Where(x => x.Succesfull == Common.Enums.Stage.Accepted))
+    {
+        <tr>
+            <td>
+                @(item.User.FirstName + " " + item.User.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Succesfull)
+            </td>
+            <td></td>
+        </tr>
+    }
+
+</table>

@@ -33,7 +33,8 @@ namespace Common.Enums
     {
         Rejected = 0,
         Pending = 1,
-        Accepted = 2
+        Accepted = 2,
+        Succesfull = 3
     }
 
     public enum ProductType

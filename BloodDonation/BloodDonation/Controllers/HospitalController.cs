@@ -1,4 +1,5 @@
-﻿using DAL.UnitOfWork.Contract;
+﻿using DAL.Models;
+using DAL.UnitOfWork.Contract;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -33,11 +34,14 @@ namespace BloodDonation.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Request request)
         {
             try
             {
-                // TODO: Add insert logic here
+                request.User_Id = User.Identity.GetUserId();
+
+                unitOfWork.RequestRepository.Insert(request);
+                unitOfWork.Save();
 
                 return RedirectToAction("Index");
             }
@@ -50,16 +54,18 @@ namespace BloodDonation.Controllers
         // GET: Hospital/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var req = unitOfWork.RequestRepository.Get(x => x.Id == id).FirstOrDefault();
+            return View(req);
         }
 
         // POST: Hospital/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Request request)
         {
             try
             {
-                // TODO: Add update logic here
+                unitOfWork.RequestRepository.Update(request);
+                unitOfWork.Save();
 
                 return RedirectToAction("Index");
             }
@@ -72,17 +78,18 @@ namespace BloodDonation.Controllers
         // GET: Hospital/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var req = unitOfWork.RequestRepository.Get(x => x.Id == id).FirstOrDefault();
+            return View(req);
         }
 
         // POST: Hospital/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult ConfirmDelete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                unitOfWork.RequestRepository.Delete(unitOfWork.RequestRepository.Get(x => x.Id == id).FirstOrDefault());
+                unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             catch

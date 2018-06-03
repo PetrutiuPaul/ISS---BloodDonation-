@@ -271,6 +271,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BloodBankController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -415,6 +416,10 @@
     <Content Include="Views\Admin\EditDoctor.cshtml" />
     <Content Include="Views\Hospital\Index.cshtml" />
     <Content Include="Views\Hospital\Create.cshtml" />
+    <Content Include="Views\Hospital\Edit.cshtml" />
+    <Content Include="Views\Hospital\Delete.cshtml" />
+    <Content Include="Views\BloodBank\Requests.cshtml" />
+    <Content Include="Views\BloodBank\Donations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

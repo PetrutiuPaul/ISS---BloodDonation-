@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +7,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BloodDonation.Models;
 using DAL.Models;
+using System.Collections.Generic;
+using DAL.UnitOfWork.Contract;
 
 namespace BloodDonation.Controllers
 {
@@ -18,15 +17,20 @@ namespace BloodDonation.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly IUnitOfWork unitOfWork;
 
-        public AccountController()
+        public AccountController(IUnitOfWork unitOfWork)
         {
+            this.unitOfWork = unitOfWork;
+            CreateViewBag();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUnitOfWork unitOfWork )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            this.unitOfWork = unitOfWork;
+            CreateViewBag();
         }
 
         public ApplicationSignInManager SignInManager
@@ -490,6 +494,37 @@ namespace BloodDonation.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+
+        private void CreateViewBag()
+        {
+            
+
+            List<SelectListItem> Counties = new List<SelectListItem>();
+            var counties = unitOfWork.CountyRepository.Get();
+            foreach (var h in counties)
+            {
+                Counties.Add(new SelectListItem
+                {
+                    Text = h.Name,
+                    Value = h.Id.ToString()
+                });
+            }
+
+            List<SelectListItem> Localities = new List<SelectListItem>();
+            var localities = unitOfWork.LocalityRepository.Get();
+            foreach (var h in localities)
+            {
+                Localities.Add(new SelectListItem
+                {
+                    Text = h.Name,
+                    Value = h.Id.ToString()
+                });
+            }
+            
+            ViewBag.Counties = Counties;
+            ViewBag.Localities = Localities;
+        }
+
         #endregion
     }
 }

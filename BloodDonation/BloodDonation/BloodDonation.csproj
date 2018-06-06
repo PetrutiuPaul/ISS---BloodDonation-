@@ -279,6 +279,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BloodAndProductsViewModel.cs" />
     <Compile Include="Models\BloodBankViewModel.cs" />
     <Compile Include="Models\DoctorViewModel.cs" />
     <Compile Include="Models\DonationViewModel.cs" />
@@ -423,6 +424,9 @@
     <Content Include="Views\BloodBank\FirstAnalyse.cshtml" />
     <Content Include="Views\BloodBank\SecondAnalyse.cshtml" />
     <Content Include="Views\BloodBank\CancelAnalyse.cshtml" />
+    <Content Include="Views\BloodBank\SendAnalyse.cshtml" />
+    <Content Include="Views\BloodBank\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

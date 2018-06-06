@@ -4,13 +4,24 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
-
-    <ul class="nav navbar-nav navbar-right" style="padding:0; ">
-        <li>
-            @Html.ActionLink("Hello, " + User.Identity.GetUserName() , "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()" style="padding:0 0 0 15px;">Log off</a></li>
-    </ul>
+        
+        @Html.ActionLink("Hello, " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
+    
+    if (User.IsInRole("Admin"))
+    {
+            @Html.ActionLink("Amin", "Index", "Admin", null , htmlAttributes: new { @class = "dropdown-item" })
+    }
+    if (User.IsInRole("Doctor"))
+    {
+            @Html.ActionLink("Hospital", "Index", "Hospital", null, htmlAttributes: new { @class = "dropdown-item" })
+        
+    }
+    if (User.IsInRole("BloodBankDoctor"))
+    {
+            @Html.ActionLink("BloodBank", "Index", "BloodBank", null, htmlAttributes: new { @class = "dropdown-item" })
+        
+    }
+    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()" style="padding:0 0 0 15px;">Log off</a>
     }
 }
 

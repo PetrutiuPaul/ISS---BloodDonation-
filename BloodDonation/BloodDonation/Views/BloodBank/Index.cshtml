@@ -1,0 +1,71 @@
+﻿@model BloodDonation.Models.BloodAndProductsViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Blood Bank Deposit</h2>
+
+<div>
+    <h4>Blood</h4>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Rh +</th>
+            <th>
+                Rh -
+            </th>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td>@Model.BloodO.Amount</td>
+            <td>
+                @Model.BloodON.Amount
+            </td>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>@Model.BloodA.Amount</td>
+            <td>
+                @Model.BloodAN.Amount
+            </td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>@Model.BloodB.Amount</td>
+            <td>
+                @Model.BloodBN.Amount
+            </td>
+        </tr>
+        <tr>
+            <td>AB</td>
+            <td>@Model.BloodAB.Amount</td>
+            <td>
+                @Model.BloodABN.Amount
+            </td>
+        </tr>
+    </table>
+    <br />
+    <h4>Products</h4>
+    <table class="table">
+        <tr>
+            <td>RedCell</td>
+            <td>@Model.RedCell.Amount</td>
+        </tr>
+        <tr>
+            <td>WhiteCell</td>
+            <td>@Model.WhiteCell.Amount</td>
+        </tr>
+        <tr>
+            <td>Plasma</td>
+            <td>@Model.Plasma.Amount</td>
+
+        </tr>
+
+    </table>
+
+    @Html.ActionLink("Donations", "Donations")
+    <br />
+    @Html.ActionLink("Request", "Requests")
+</div>
+

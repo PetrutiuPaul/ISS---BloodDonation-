@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Requests</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,6 +23,12 @@
         <th>
             @Html.DisplayNameFor(model => model.ProductType)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BloodType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rh)
+        </th>
         <th></th>
     </tr>
 
@@ -40,10 +46,24 @@
         <td>
             @Html.DisplayFor(modelItem => item.ProductType)
         </td>
+        @if (item.ProductType == Common.Enums.ProductType.Blood)
+    {
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.BloodType)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Rh)
+        </td>
+}
+else
+{
+    <td></td>
+    <td></td>
+}
+        <td>
+            @Html.ActionLink("Accept", "AcceptRequest", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })
+            @Html.ActionLink("Ask For Blood", "SendNotification", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
         </td>
     </tr>
 }

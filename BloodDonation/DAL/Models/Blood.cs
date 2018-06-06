@@ -15,6 +15,9 @@
 
         [Required]
         public RhType Rh { get; set; }
+        
+        [Required]
+        public float Amount { get; set; }
 
         [ForeignKey("BloodBank")]
         [Required]

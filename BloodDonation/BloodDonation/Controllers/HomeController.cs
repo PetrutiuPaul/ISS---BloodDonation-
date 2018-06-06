@@ -1,13 +1,11 @@
 ﻿using BloodDonation.Models;
 using Common.Enums;
 using DAL.Models;
-using DAL.UnitOfWork;
 using DAL.UnitOfWork.Contract;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BloodDonation.Controllers

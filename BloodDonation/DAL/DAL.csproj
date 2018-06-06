@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201805281519283_nameChange.Designer.cs">
       <DependentUpon>201805281519283_nameChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806050910272_BloodAmount.cs" />
+    <Compile Include="Migrations\201806050910272_BloodAmount.Designer.cs">
+      <DependentUpon>201806050910272_BloodAmount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\Blood.cs" />
@@ -118,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805281519283_nameChange.resx">
       <DependentUpon>201805281519283_nameChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806050910272_BloodAmount.resx">
+      <DependentUpon>201806050910272_BloodAmount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace BloodDonation.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private IUnitOfWork unitOfWork;
@@ -38,6 +39,11 @@ namespace BloodDonation.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        public ActionResult Index()
+        {
+            return View();
         }
 
         public ActionResult Hospitals()

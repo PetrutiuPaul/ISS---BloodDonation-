@@ -36,23 +36,6 @@
 </nav>
 
 
-    @*<div class="navbar navbar-inverse" style="margin-bottom:0;  border:none; padding:0" >
-        
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse" style="padding:0;">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Blood Donation", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>*@
-
 
 
 <div class="photo">
@@ -134,8 +117,6 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-                    <h4>DonationViewModel</h4>
-                    <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         @Html.Label("Blood Bank", htmlAttributes: new { @class = "control-label col-md-3" })
@@ -143,7 +124,9 @@
                             @Html.DropDownList("BloodBank_Id", bloodbanks, new { @class = "" })
                         </div>
                     </div>
-
+                    <p>
+                        Prin apasarea butonului doneaza, ma insctriu sa donez sange la centrul de transfuzie selectat in urmatoarele 3 zile si ma incadrez in toate cerintele prezente <a href="https://sieudonez.ro/cum-donezi/">aici</a>.
+                    </p>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Create" class="btn btn-default" />

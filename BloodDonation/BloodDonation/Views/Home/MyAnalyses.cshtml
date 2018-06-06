@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DAL.Models.Donation>
+
+@{
+    ViewBag.Title = "MyAnalyses";
+}
+
+<h2>My Analyses</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Results/Denial Reason")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Where(x=>x.BloodTestResults != null)) {
+    <tr>
+            @if (item.DenialReason != String.Empty)
+            {
+                <td>
+                @Html.DisplayFor(modelItem => item.DenialReason)
+                </td>
+            } else {
+                <td>
+                    Ok
+                </td>
+                
+            }
+        <td>
+            @Html.ActionLink("View Analyses", "Analyse", new { id=item.Id }, new { @class = "btn btn-info" }) 
+        </td>
+    </tr>
+}
+
+</table>

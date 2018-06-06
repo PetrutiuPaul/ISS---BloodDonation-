@@ -1,0 +1,21 @@
+﻿@model DAL.Models.BloodTestResult
+
+@{
+    ViewBag.Title = "Analyse";
+}
+
+<h2>Analyse</h2>
+
+<div>
+    <h4>BloodTestResult</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AnalyzeResult)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnalyzeResult)
+        </dd>
+    </dl>
+</div>

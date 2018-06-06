@@ -70,18 +70,30 @@ namespace BloodDonation.Controllers
             }
         }
 
-        public ActionResult About()
+       public ActionResult MyAnalyses()
         {
-            ViewBag.Message = "Your application description page.";
+            var userId = User.Identity.GetUserId();
 
-            return View();
+            var donations = unitOfWork.DonationRepository.Get(x => x.User_Id == userId, includeProperties: "BloodTestResults");
+
+            return View(donations);
         }
 
-        public ActionResult Contact()
+        public ActionResult Analyse(int id)
         {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
+            var donation = unitOfWork.DonationRepository.Get(x => x.Id == id, includeProperties: "BloodTestResults").FirstOrDefault();
+
+            return View(donation.BloodTestResults.FirstOrDefault());
+        }
+
+        public ActionResult MyNotifications()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var notifications = unitOfWork.UserNotificationRepository.Get(x => x.User_Id == userId, includeProperties: "Notification,Notification.Request");
+
+            return View(notifications);
         }
     }
 }

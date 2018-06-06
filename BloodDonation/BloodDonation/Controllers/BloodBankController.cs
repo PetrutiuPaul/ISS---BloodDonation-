@@ -160,10 +160,14 @@ namespace BloodDonation.Controllers
         public ActionResult FirstAnalyse(Donation don)
         {
             var donation = this.unitOfWork.DonationRepository.Get(x => x.Id == don.Id).FirstOrDefault();
+            var user = unitOfWork.UserRepository.Get(x => x.Id == donation.User_Id).First();
+            user.BloodType = don.BloodType;
+            user.RhType = don.RhType;
             donation.RhType = don.RhType;
             donation.BloodType = don.BloodType;
             donation.Succesfull = Common.Enums.Stage.Accepted;
             unitOfWork.DonationRepository.Update(donation);
+            unitOfWork.UserRepository.Update(user);
             unitOfWork.Save();
             return RedirectToAction("Donations");
         }
@@ -617,6 +621,7 @@ namespace BloodDonation.Controllers
                     User_Id = user.Id
                 });
             }
+            unitOfWork.Save();
 
             return RedirectToAction("Requests");
         }

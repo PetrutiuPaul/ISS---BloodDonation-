@@ -427,6 +427,9 @@
     <Content Include="Views\BloodBank\SendAnalyse.cshtml" />
     <Content Include="Views\BloodBank\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Home\MyAnalyses.cshtml" />
+    <Content Include="Views\Home\Analyse.cshtml" />
+    <Content Include="Views\Home\MyNotifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

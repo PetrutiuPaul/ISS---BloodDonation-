@@ -1,0 +1,24 @@
+﻿@model IEnumerable<DAL.Models.UserNotification>
+
+@{
+    ViewBag.Title = "MyNotifications";
+}
+
+<h2>My Notifications</h2>
+
+<table class="table">
+    <tr>
+        <th>Notification are sorted by date
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Notification.Request.PatientName need blood and you are a compatible donor.
+            You must donate to the transfusion center of the county where you are.
+        </td>
+    </tr>
+}
+
+</table>
